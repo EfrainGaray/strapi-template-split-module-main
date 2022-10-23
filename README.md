@@ -1,4 +1,4 @@
-# 🚀 Getting started with Strapi
+# 🚀 Getting started with Strapi Docker Compose
 
 Strapi comes with a full featured [Command Line Interface](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html) (CLI) which lets you scaffold and manage your project in seconds.
 
@@ -6,31 +6,35 @@ Strapi comes with a full featured [Command Line Interface](https://docs.strapi.i
 
 Start your Strapi application with autoReload enabled. [Learn more](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html#strapi-develop)
 
-```
-npm run develop
-# or
-yarn develop
-```
-
-### `start`
-
-Start your Strapi application with autoReload disabled. [Learn more](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html#strapi-start)
+### `Configure .env enviroment`
 
 ```
-npm run start
-# or
-yarn start
+HOST=0.0.0.0
+PORT=1337
+APP_KEYS=9FD6AAFC2C2B9,242EC21CA2688
+API_TOKEN_SALT=E2FD1637814EE
+ADMIN_JWT_SECRET=C947297DA1A2376C
+JWT_SECRET=FC3651B84B144EC1
+NODE_ENV=development
+DATABASE_USERNAME=
+DATABASE_CLIENT=
+DATABASE_PASSWORD=
+DATABASE_HOST=
+DATABASE_PORT=
+DATABASE_NAME=
+DATABASE_SSL_SELF=
+DATABASE_SCHEMA=
+
 ```
 
-### `build`
-
-Build your admin panel. [Learn more](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html#strapi-build)
+### `Required docker and docker compose`
 
 ```
-npm run build
-# or
-yarn build
+docker-compose up
+
+
 ```
+
 
 ## ⚙️ Deployment
 
