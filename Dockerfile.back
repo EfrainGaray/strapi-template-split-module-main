@@ -10,6 +10,5 @@ RUN yarn config set network-timeout 600000 -g
 RUN yarn install
 WORKDIR /opt/app
 COPY ./ .
-RUN yarn build
 EXPOSE 1337
 CMD ["yarn", "develop"]

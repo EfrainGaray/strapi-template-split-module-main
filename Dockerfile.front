@@ -1,9 +1,24 @@
+FROM node:16-alpine as build
+# Installing libvips-dev for sharp Compatibility
+RUN apk update && apk add  build-base gcc autoconf automake zlib-dev libpng-dev nasm bash vips-dev
+ARG NODE_ENV=development
+ENV NODE_ENV=${NODE_ENV}
+WORKDIR /opt/
+COPY ./package.json ./yarn.lock ./
+ENV PATH /opt/node_modules/.bin:$PATH
+RUN yarn config set network-timeout 600000 -g 
+RUN yarn install
+WORKDIR /opt/app
+COPY ./ .
+RUN yarn build
+
+
 FROM nginx:alpine
 # Set working directory to nginx asset directory
 WORKDIR /usr/share/nginx/html
 # Remove default nginx static assets
 RUN rm -rf ./*
 # Copy static assets over
-COPY ./build/* ./
+COPY --from=0 /opt/app/build/* ./
 # Containers run nginx with global directives and daemon off
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
